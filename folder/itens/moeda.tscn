@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://pojxh6gqobtm"]
+
+[ext_resource type="Texture2D" uid="uid://c5jrhuwixcwxc" path="res://add/Mini FX, Items & UI/Common Pick-ups/Coin (16 x 16).png" id="1_3qnam"]
+[ext_resource type="Script" uid="uid://bbpgv00jt7gpw" path="res://add/Sprite Pack 5/4 - Squirmy Wormy/moeda.gd" id="1_cwf41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwf41"]
+atlas = ExtResource("1_3qnam")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25g50"]
+atlas = ExtResource("1_3qnam")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0lni"]
+atlas = ExtResource("1_3qnam")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bwvk"]
+atlas = ExtResource("1_3qnam")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kej78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwf41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25g50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0lni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bwvk")
+}],
+"loop": true,
+"name": &"moeda",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rjf17"]
+radius = 7.07107
+
+[node name="moeda" type="Area2D"]
+script = ExtResource("1_cwf41")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.25, 2.25)
+scale = Vector2(0.71875, 0.71875)
+sprite_frames = SubResource("SpriteFrames_kej78")
+animation = &"moeda"
+autoplay = "moeda"
+frame_progress = 0.928526
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_rjf17")

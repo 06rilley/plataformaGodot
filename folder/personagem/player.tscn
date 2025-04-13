@@ -1,0 +1,159 @@
+[gd_scene load_steps=21 format=3 uid="uid://de46h5g4l7b4n"]
+
+[ext_resource type="Script" uid="uid://cb6svi4jydwcd" path="res://personagem/player.gd" id="1_esgq3"]
+[ext_resource type="Texture2D" uid="uid://bf20vqbcbqx1m" path="res://add/Sprite Pack 5/2 - Lil Wiz/Idle_(32 x 32).png" id="2_1yqc4"]
+[ext_resource type="Texture2D" uid="uid://c8uy3aadn2r6x" path="res://add/Sprite Pack 5/2 - Lil Wiz/Running_(32 x 32).png" id="2_esgq3"]
+[ext_resource type="Texture2D" uid="uid://sdoblavat3r" path="res://add/Sprite Pack 5/2 - Lil Wiz/Jumping_(32 x 32).png" id="4_kjkj0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebxsg"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tue77"]
+atlas = ExtResource("2_esgq3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33vod"]
+atlas = ExtResource("2_esgq3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er1rk"]
+atlas = ExtResource("2_esgq3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7yfm"]
+atlas = ExtResource("2_esgq3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua707"]
+atlas = ExtResource("2_esgq3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkwqa"]
+atlas = ExtResource("2_esgq3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajkj5"]
+atlas = ExtResource("2_1yqc4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqohc"]
+atlas = ExtResource("2_1yqc4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3icr"]
+atlas = ExtResource("2_1yqc4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrct7"]
+atlas = ExtResource("2_1yqc4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng0qk"]
+atlas = ExtResource("2_1yqc4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41w2c"]
+atlas = ExtResource("2_1yqc4")
+region = Rect2(0, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nkr1"]
+atlas = ExtResource("4_kjkj0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udh2o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tue77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33vod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er1rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7yfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua707")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkwqa")
+}],
+"loop": true,
+"name": &"animacao-correndo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajkj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqohc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3icr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrct7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng0qk")
+}],
+"loop": true,
+"name": &"animacao-padrao",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41w2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nkr1")
+}],
+"loop": true,
+"name": &"animacao-pulando",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5c32"]
+size = Vector2(16, 20)
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 23
+script = ExtResource("1_esgq3")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(26, 73)
+shape = SubResource("CapsuleShape2D_ebxsg")
+
+[node name="animacoes" type="AnimatedSprite2D" parent="."]
+position = Vector2(33, 64)
+scale = Vector2(1.19141, 1.30859)
+sprite_frames = SubResource("SpriteFrames_udh2o")
+animation = &"animacao-pulando"
+autoplay = "animacao-padrao"
+frame_progress = 0.158464
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+limit_left = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.5
+drag_right_margin = 0.5
+editor_draw_limits = true
+
+[node name="animacoes" type="AnimationPlayer" parent="camera"]
+
+[node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(27, 73)
+shape = SubResource("RectangleShape2D_n5c32")
+debug_color = Color(0.979028, 0.144433, 1.92523e-07, 0.42)
